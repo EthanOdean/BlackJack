@@ -1,0 +1,321 @@
+html {
+    font-size: 16px;
+    color: antiquewhite;
+    overflow: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: darkgreen;
+}
+#background {
+    z-index: -1;
+    position: absolute;
+    height: 100vh;
+    margin-left: calc((100vw - 100vh*4/3)/2);
+}
+#card-icon {
+    height: 30vh;
+    margin-top: 14vh;
+    rotate: -10deg;
+}
+#suits-icon {
+    height: 8vh;
+}
+#title {
+    margin-bottom: 0;
+}
+#grid-container {
+    display: grid;
+    grid-template-areas:
+        "Header center right"
+        "Left center right";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 20vh 80vh;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    border-collapse: collapse;
+    margin: 0;
+}
+header {
+    display: inline;
+    /*background-color: saddlebrown;*/
+    list-style:none;
+    grid-area: Header;
+    /*position: absolute;*/
+
+    /*width: calc((100vw - 100vh*4/3)/2);*/
+    text-align: center;
+}
+.Left {
+    /*background-color: darkgreen;*/
+    grid-area: Left;
+    padding-left: 1vw;
+}
+#bet-msg {
+    margin: 10px;
+}
+#bet-error-msg {
+    margin: 3px;
+    color: red;
+}
+button {
+    background-color: royalblue;
+    color: white;
+    border-radius: 12px;
+}
+button:hover {
+    background-color: darkblue; /* Green */
+    color: white;
+}
+#uBet {
+    margin-left: 5px;
+    width: 8vw;
+}
+.Center {
+    /*background-color: darkgreen;*/
+    grid-area: center;
+    /*border:1px solid black;*/
+    text-align: center;
+    /*display: grid;*/
+    /*grid-template-areas:*/
+    /*    "top top top"*/
+    /*    "side dealer side"*/
+    /*    "side d-hand side"*/
+    /*    "side d-buttons side"*/
+    /*    "side player side"*/
+    /*    "side p-hand side"*/
+    /*    "side p-buttons side"*/
+    /*    "bottom bottom bottom";*/
+    /*grid-template-columns: 1fr 3fr 1fr;*/
+    /*grid-template-rows: 1fr 1fr 3fr 1fr 1fr 3fr 1fr 1fr;*/
+}
+.Right {
+    grid-area: right;
+    /*background-color: darkgreen;*/
+    /*border:1px solid black;*/
+    padding-left: 20px;
+    padding-top: 20px;
+}
+#cards {
+    padding-left: 20px;
+}
+.cardImg {
+    margin: 5px;
+    height: 80px;
+    visibility: hidden;
+}
+#status1, #status2 {
+    margin-top: 10vh;
+    margin-bottom: 0;
+}
+#status1{
+    color: yellow;
+}
+#status2{
+    color: navajowhite;
+}
+table, th, td {
+    border: 2px solid sandybrown;
+    /*border: 2px solid navajowhite;*/
+    padding: 2px;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: saddlebrown;
+}
+#by {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+}
+#player-cards {
+    margin: auto;
+    height: 80px;
+    /*width: 30vw;*/
+    padding: 0;
+    /*grid-area: p-hand;*/
+}
+#dealer-cards {
+    margin: auto;
+    height: 80px;
+    /*width: 30vw;*/
+    padding: 0;
+    /*grid-area: d-hand;*/
+}
+#d-hand-title {
+    margin-top: 11vh;
+    margin-bottom: 1vh;
+    /*grid-area: dealer;*/
+}
+#p-hand-title {
+    margin-top: 10vh;
+    margin-bottom: 1vh;
+    /*grid-area: player;*/
+}
+.centerBtn, .gs-d-turn, .gs-p-turn, #refresh {
+    margin-top: 2vh;
+}
+#refresh {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 91vh;
+    left: 1vw;
+    background-color: red;
+    font-size: 1.2rem;
+}
+#winner {
+    position: absolute;
+    height: 8vh;
+    left: 57vw;
+    top: 9vh;
+    /*top: 43vh;*/
+    z-index: 1;
+    display: none;
+}
+#loser {
+    position: absolute;
+    height: 25vh;
+    padding: 0;
+    left: 30vw;
+    top: 35vh;
+    rotate: -10deg;
+    /*top: 1vh;*/
+    z-index: 1;
+    display: none;
+}
+#busted {
+    position: absolute;
+    height: 30vh;
+    top: 43vh;
+    /*top: 12vh;*/
+    left: 37vw;
+    z-index: 1;
+    display: none;
+}
+#black-jack {
+    position: absolute;
+    height: 12vh;
+    top: 62vh;
+    /*top: 32vh;*/
+    left: 58vw;
+    z-index: 1;
+    display: none;
+}
+#failure, #failure2 {
+    display: none;
+    background: black;
+    text-align: center;
+    position: absolute;
+    font-size: 2.4rem;
+    color: red;
+    z-index: 2;
+    top: 35vh;
+    padding: 5vh 10vw;
+}
+#failure2 {
+    z-index: 3;
+    color: antiquewhite;
+    width: 80vw;
+    padding: 1vh 10vw 100vh 10vw;
+    margin: auto;
+}
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 0.8rem;
+    }
+    #grid-container {
+        grid-template-columns: 1fr 2fr 1fr;
+        /*calc((100vw - 100vh*4/3)/2) calc(100vh * 4/3) calc((100vw - 100vh*4/3)/2);*/
+        grid-template-rows: 20vh 80vh;
+    }
+}
+@media screen and (max-width: 850px) {
+    /*Enter phone mode*/
+    html {
+        font-size: 0.6rem;
+    }
+    #grid-container {
+        display: grid;
+        grid-template-areas:
+        "Header empty"
+        "center center"
+        "Left right";
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: 10vh 50vh 40vh;
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        border-collapse: collapse;
+        margin: 0;
+    }
+    header {
+        text-align: left;
+        padding-left: 5vw;
+    }
+    #suits-icon {
+        height: 6vh;
+    }
+    #background {
+        width: 100vw;
+        margin-left: 0;
+
+        /*height: auto;*/
+        /*margin-top: 10vh;*/
+    }
+    #status1, #status2 {
+        margin-top: 1vh;
+        margin-bottom: 0;
+    }
+    #by {
+        padding-left: 0;
+        margin: 2vh 1vw 1vh 0;
+        float: right;
+    }
+    /*#player-cards {*/
+    /*    background: grey;*/
+    /*    height: 20vh;*/
+    /*    width: 30vw;*/
+    /*    !*grid-area: p-hand;*!*/
+    /*}*/
+    /*#dealer-cards {*/
+    /*    background: darkblue;*/
+    /*    height: 20vh;*/
+    /*    width: 30vw;*/
+    /*    !*grid-area: d-hand;*!*/
+    /*}*/
+    #d-hand-title {
+        margin-top: 2vh;
+        /*grid-area: dealer;*/
+    }
+    #p-hand-title {
+        margin-top: 2vh;
+        /*grid-area: player;*/
+    }
+    #card-icon {
+        display: none;
+    }
+    .Right {
+        justify-content: center;
+    }
+    #bet-area {
+        grid-area: bet;
+    }
+    #black-jack {
+        /*height: auto;*/
+        /*width: 8vw;*/
+        left: 66vw;
+    }
+    #loser {
+        right: 60vw;
+        left: auto;
+    }
+    #winner {
+        left: 65vw;
+    }
+    #busted {
+        top: 36vh;
+        left: 30vw;
+    }
+}
